@@ -1,0 +1,278 @@
+*{box-sizing:border-box}
+:root{color-scheme:dark;--bg:#050814;--card:#070b15;--input:#0b1423;--border:#1b2b40;--cyan:#12d9f3;--text:#f4f7fc;--muted:#66839f;--button:#14243a;--red:#c83d68}
+html{min-height:100%;background:var(--bg)}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+button,input{font:inherit}
+button{color:inherit}
+.app-shell{width:min(100%,1120px);margin:0 auto;padding:26px 32px 40px}
+.top-header{position:relative}
+.heading-row{min-height:92px;display:flex;align-items:flex-start}
+h1{font-size:clamp(28px,4.2vw,40px);line-height:1.1;margin:4px 0 0;font-weight:750;letter-spacing:-.7px}
+.connection-status{margin:-4px 0 0 56px;color:#20bd70;font-size:clamp(15px,2.2vw,22px);line-height:1.1;position:relative}
+.status-dot{display:none}
+.deadline-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:-3px}
+.deadline-row h2{font-size:clamp(18px,2.5vw,25px);margin:0;font-weight:700;letter-spacing:-.35px}
+.countdown{display:flex;align-items:center;gap:9px;flex-shrink:0;font-weight:700;font-size:clamp(20px,2.8vw,28px)}
+.countdown span{min-width:54px;text-align:center;padding:10px 8px;background:#101626;border:2px solid #293047;border-radius:9px;line-height:1}
+.countdown b{font-weight:700}
+.tabs{display:grid;grid-template-columns:1fr 1fr 1.35fr;align-items:start;margin:34px 0 58px;gap:8px}
+.tab{position:relative;border:0;background:transparent;color:var(--muted);font-size:clamp(16px,2.4vw,23px);font-weight:700;padding:7px 3px 21px;min-height:54px;cursor:pointer}
+.tab.active{color:var(--cyan)}
+.tab.active:after{content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);height:4px;width:76px;background:var(--cyan)}
+.toolbar{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.25fr);gap:16px;margin-bottom:28px}
+.return-button,.search-box{height:92px;border:3px solid #1b2b40;border-radius:27px;background:var(--button);display:flex;align-items:center}
+.return-button{padding:0 24px;gap:16px;color:#91b4d1;font-size:clamp(15px,2.3vw,23px);font-weight:700;white-space:nowrap;cursor:pointer;justify-content:center}
+.return-button svg{width:36px;height:36px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.visit-count{border:3px solid #80304e;background:#3a1b30;color:#e84c79;border-radius:25px;min-width:62px;height:52px;display:grid;place-items:center;font-size:22px;padding:0 12px}
+.search-box{background:var(--input);padding:0 26px 0 34px;gap:12px}
+.search-box input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:var(--text);font-size:clamp(22px,3.1vw,32px)}
+.search-box input::placeholder{color:#617d98}
+.search-box svg{width:40px;height:40px;fill:none;stroke:var(--cyan);stroke-width:2.2;flex-shrink:0}
+.list-heading{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:clamp(16px,2.2vw,22px);font-weight:700;padding:0 10px 0}
+.list-divider{height:2px;background:#1b2b40;margin:28px 0}
+.records{display:grid;gap:18px}
+.record-card{min-height:470px;border:3px solid var(--border);border-radius:38px;background:var(--card);padding:27px 26px;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:20px}
+.record-left,.record-right{min-width:0}
+.record-index{color:var(--muted);font-size:21px;font-weight:700;margin:0 0 18px}
+.state-pill{display:inline-flex;align-items:center;border:3px solid #52677d;background:#182330;color:#a9c8e0;border-radius:30px;padding:8px 25px;font-size:20px;line-height:1;font-weight:700;margin-bottom:48px}
+.phone-line{display:flex;align-items:center;gap:10px;min-width:0;margin-bottom:55px}
+.phone-number{padding:0;border:0;background:transparent;color:var(--cyan);font-size:clamp(20px,3.2vw,32px);font-weight:750;letter-spacing:-.6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left;cursor:pointer;min-width:0}
+.copy-button{flex:0 0 42px;width:42px;height:44px;border:0;background:transparent;color:var(--cyan);padding:3px;cursor:pointer}
+.copy-button svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round}
+.record-name{font-size:clamp(18px,2.2vw,22px);color:var(--cyan);margin:0 0 44px;min-height:20px}
+.whatsapp-button{height:85px;padding:0 22px;border:3px solid #293047;border-radius:25px;background:#14243a;color:#9abbd8;display:inline-flex;align-items:center;gap:13px;font-size:clamp(16px,2.2vw,22px);font-weight:700;text-decoration:none;cursor:pointer}
+.whatsapp-button svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.record-right h3{font-size:21px;color:var(--muted);margin:0 0 48px;font-weight:700}
+.check-list{display:flex;flex-direction:column;gap:58px}
+.check-item{display:flex;align-items:center;gap:17px;color:var(--text);font-size:clamp(16px,2.2vw,22px);line-height:1.2;cursor:pointer}
+.check-item input{appearance:none;-webkit-appearance:none;width:39px;height:39px;flex:0 0 39px;border:4px solid #54718b;border-radius:11px;margin:0;background:transparent;display:grid;place-items:center;cursor:pointer}
+.check-item input:checked{background:var(--cyan);border-color:var(--cyan)}
+.check-item input:checked:after{content:"";width:17px;height:9px;border-left:4px solid #06101a;border-bottom:4px solid #06101a;transform:rotate(-45deg) translate(1px,-2px)}
+.check-item input:not(:checked)+span{color:var(--muted)}
+.empty-state{text-align:center;color:var(--muted);padding:36px 10px;border:2px dashed var(--border);border-radius:20px}
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center;padding:20px;z-index:20;opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s ease}
+.modal-backdrop.open{opacity:1;visibility:visible}
+.edit-dialog{position:relative;width:min(100%,430px);padding:30px 24px 24px;border:2px solid var(--border);border-radius:24px;background:#0b1423;box-shadow:0 24px 80px #0009;transform:translateY(12px) scale(.98);transition:transform .2s ease}
+.modal-backdrop.open .edit-dialog{transform:translateY(0) scale(1)}
+.edit-dialog h2{font-size:23px;margin:0 34px 25px 0}
+.modal-close{position:absolute;right:15px;top:10px;border:0;background:transparent;color:#91a8bd;font-size:32px;cursor:pointer}
+.modal-label{display:block;color:#91a8bd;font-size:14px;margin-bottom:9px}
+.phone-input{width:100%;height:54px;border:2px solid #29405a;border-radius:12px;background:#060d19;color:var(--text);padding:0 14px;font-size:18px;outline:none}
+.phone-input:focus{border-color:var(--cyan)}
+.format-hint{font-size:12px;color:var(--muted);margin:9px 0 24px}
+.modal-actions{display:flex;justify-content:flex-end;gap:10px}
+.modal-actions button{height:45px;padding:0 19px;border-radius:12px;font-weight:700;cursor:pointer}
+.cancel-button{border:1px solid #34475d;background:#172338;color:#b6c7d7}
+.save-button{border:1px solid var(--cyan);background:var(--cyan);color:#04111a}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#14243a;border:1px solid #31516b;color:#eaf8ff;padding:12px 18px;border-radius:12px;z-index:30;box-shadow:0 8px 28px #0007;transition:.2s ease;font-size:14px;white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:600px){
+ .app-shell{padding:24px 13px 30px}
+ .heading-row{min-height:82px}
+ .connection-status{margin-left:49px}
+ .deadline-row{margin-top:0;gap:8px}
+ .deadline-row h2{font-size:17px;white-space:nowrap}
+ .countdown{gap:5px;font-size:19px}
+ .countdown span{min-width:43px;padding:8px 5px;border-radius:8px;border-width:2px}
+ .tabs{margin:31px 0 58px;gap:4px;grid-template-columns:1fr 1fr 1.35fr}
+ .tab{font-size:16px;padding-bottom:19px;min-height:54px}
+ .tab.active:after{width:65px;height:4px}
+ .toolbar{grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:10px;margin-bottom:25px}
+ .return-button{height:88px;padding:0 10px;gap:10px;border-radius:26px;border-width:3px;font-size:15px}
+ .return-button svg{width:31px;height:31px}
+ .visit-count{min-width:50px;height:50px;font-size:20px;border-width:3px}
+ .search-box{height:88px;padding:0 17px 0 21px;border-radius:26px;border-width:3px}
+ .search-box input{font-size:25px}
+ .search-box svg{width:35px;height:35px}
+ .list-heading{padding:0 8px;font-size:17px}
+ .list-divider{margin:28px 0}
+ .record-card{min-height:586px;padding:25px 24px 27px;border-radius:37px;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:12px}
+ .record-index{font-size:20px;margin-bottom:18px}
+ .state-pill{font-size:18px;padding:8px 24px;margin-bottom:49px;border-width:3px}
+ .phone-line{gap:5px;margin-bottom:55px}
+ .phone-number{font-size:clamp(19px,6vw,27px);letter-spacing:-.7px}
+ .copy-button{flex-basis:37px;width:37px;height:42px}
+ .record-name{font-size:20px;margin-bottom:43px}
+ .whatsapp-button{height:85px;padding:0 16px;gap:10px;border-radius:25px;font-size:17px;border-width:3px}
+ .whatsapp-button svg{width:27px;height:27px}
+ .record-right h3{font-size:20px;margin-bottom:49px}
+ .check-list{gap:58px}
+ .check-item{gap:14px;font-size:17px;align-items:center}
+ .check-item input{width:39px;height:39px;flex-basis:39px;border-radius:10px;border-width:4px}
+}
+@media(max-width:375px){
+ .app-shell{padding-left:10px;padding-right:10px}
+ .return-button{font-size:13px;gap:7px}
+ .return-button svg{width:27px;height:27px}
+ .visit-count{min-width:42px;padding:0 8px}
+ .search-box{padding-left:14px;padding-right:12px}
+ .record-card{padding-left:17px;padding-right:17px;gap:8px}
+ .phone-number{font-size:18px}
+ .check-item{font-size:15px;gap:9px}
+ .check-item input{width:34px;height:34px;flex-basis:34px}
+ .whatsapp-button{padding:0 10px;font-size:15px}
+}
+@media(min-width:700px){
+ .record-card{min-height:430px;padding:32px 34px}
+ .check-list{gap:42px}
+ .state-pill{margin-bottom:38px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+
+
+/* VISUAL CORRECTION: closer proportions for Android portrait */
+@media(max-width:800px){
+  .app-shell{padding:16px 13px 24px}
+  .heading-row{min-height:70px;display:block}
+  .heading-row h1{display:block;margin:0 0 2px;font-size:28px;line-height:1.05}
+  .connection-status{margin:0 0 0 28px;font-size:15px;line-height:1.1}
+  .deadline-row{margin-top:8px}
+  .deadline-row h2{font-size:17px}
+  .countdown{font-size:19px;gap:5px}
+  .countdown span{min-width:40px;padding:7px 5px}
+  .tabs{margin:27px 0 42px}
+  .tab{font-size:15px;min-height:47px;padding:5px 1px 16px}
+  .tab.active:after{width:55px;height:3px}
+  .toolbar{gap:9px;margin-bottom:20px}
+  .return-button,.search-box{height:72px;border-radius:22px;border-width:2px}
+  .return-button{padding:0 8px;gap:7px;font-size:13px}
+  .return-button svg{width:25px;height:25px}
+  .visit-count{min-width:39px;height:39px;padding:0 7px;font-size:17px;border-width:2px}
+  .search-box{padding:0 13px 0 17px}
+  .search-box input{font-size:22px}
+  .search-box svg{width:30px;height:30px}
+  .list-heading{font-size:15px;padding:0 6px}
+  .list-divider{margin:21px 0 22px}
+  .record-card{
+    min-height:455px;
+    padding:20px 18px 22px;
+    border-width:2px;
+    border-radius:31px;
+    grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+    gap:9px;
+  }
+  .record-index{font-size:16px;margin-bottom:14px}
+  .state-pill{font-size:15px;padding:6px 18px;border-width:2px;margin-bottom:31px}
+  .phone-line{gap:4px;margin-bottom:36px}
+  .phone-number{font-size:clamp(14px,4.3vw,19px);letter-spacing:-.35px;overflow:visible;text-overflow:clip}
+  .copy-button{flex:0 0 29px;width:29px;height:31px;padding:2px}
+  .record-name{font-size:16px;margin-bottom:33px;min-height:16px}
+  .whatsapp-button{height:66px;padding:0 13px;gap:8px;border-radius:20px;border-width:2px;font-size:15px}
+  .whatsapp-button svg{width:23px;height:23px}
+  .record-right h3{font-size:16px;margin:0 0 37px}
+  .check-list{gap:37px}
+  .check-item{gap:10px;font-size:14px;white-space:nowrap}
+  .check-item input{width:29px;height:29px;flex-basis:29px;border-radius:8px;border-width:3px}
+  .check-item input:checked:after{width:13px;height:7px;border-width:3px}
+}
+@media(max-width:380px){
+  .app-shell{padding-left:10px;padding-right:10px}
+  .record-card{padding-left:14px;padding-right:14px;grid-template-columns:minmax(0,1.03fr) minmax(0,.97fr)}
+  .phone-number{font-size:13px}
+  .check-item{font-size:12px;gap:7px}
+  .check-item input{width:26px;height:26px;flex-basis:26px}
+  .return-button{font-size:11px}
+}
+@media(min-width:801px){
+  .app-shell{padding-top:28px}
+}
+
+
+/* FINAL COMPACT CARD OVERRIDE */
+@media(max-width:800px){
+  .record-card{
+    min-height:0 !important;
+    padding:15px 15px 17px !important;
+    border-radius:25px !important;
+    gap:8px !important;
+  }
+  .record-index{margin:0 0 10px !important;font-size:15px !important}
+  .state-pill{
+    margin:0 0 22px !important;
+    padding:5px 14px !important;
+    font-size:13px !important;
+    border-radius:22px !important;
+  }
+  .phone-line{margin:0 0 23px !important;gap:3px !important}
+  .phone-number{font-size:clamp(13px,3.8vw,17px) !important}
+  .copy-button{width:25px !important;height:27px !important;flex-basis:25px !important}
+  .record-name{font-size:14px !important;margin:0 0 21px !important;min-height:14px !important}
+  .whatsapp-button{
+    height:52px !important;
+    padding:0 11px !important;
+    border-radius:16px !important;
+    font-size:13px !important;
+    gap:7px !important;
+  }
+  .whatsapp-button svg{width:19px !important;height:19px !important}
+  .record-right h3{font-size:15px !important;margin:0 0 25px !important}
+  .check-list{gap:23px !important}
+  .check-item{font-size:13px !important;gap:8px !important}
+  .check-item input{
+    width:25px !important;height:25px !important;flex-basis:25px !important;
+    border-radius:7px !important;border-width:2px !important;
+  }
+  .check-item input:checked:after{
+    width:11px !important;height:6px !important;border-width:2px !important;
+  }
+}
+@media(max-width:380px){
+  .record-card{padding:13px 12px 15px !important}
+  .phone-number{font-size:12px !important}
+  .check-item{font-size:11px !important;gap:6px !important}
+  .check-item input{width:23px !important;height:23px !important;flex-basis:23px !important}
+  .whatsapp-button{height:47px !important;padding:0 8px !important;font-size:12px !important}
+}
+
+
+/* EXTRA FLAT CARD — tighter vertical rhythm */
+@media(max-width:800px){
+  .record-card{
+    min-height:unset !important;
+    height:auto !important;
+    padding:10px 12px 12px !important;
+    border-radius:21px !important;
+    grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr) !important;
+    align-items:start !important;
+    gap:6px !important;
+  }
+  .record-index{font-size:13px !important;margin:0 0 7px !important}
+  .state-pill{
+    font-size:11px !important;
+    line-height:1 !important;
+    padding:4px 11px !important;
+    margin:0 0 13px !important;
+    border-width:2px !important;
+  }
+  .phone-line{margin:0 0 13px !important;gap:2px !important}
+  .phone-number{font-size:clamp(11px,3.2vw,15px) !important;letter-spacing:-.25px !important}
+  .copy-button{width:21px !important;height:23px !important;flex-basis:21px !important}
+  .record-name{font-size:12px !important;margin:0 0 12px !important;min-height:12px !important}
+  .whatsapp-button{
+    height:38px !important;
+    padding:0 8px !important;
+    border-radius:12px !important;
+    border-width:2px !important;
+    font-size:11px !important;
+    gap:5px !important;
+  }
+  .whatsapp-button svg{width:16px !important;height:16px !important}
+  .record-right h3{font-size:13px !important;margin:0 0 16px !important}
+  .check-list{gap:13px !important}
+  .check-item{font-size:11px !important;gap:6px !important;line-height:1.1 !important}
+  .check-item input{
+    width:20px !important;height:20px !important;flex-basis:20px !important;
+    border-radius:5px !important;border-width:2px !important;
+  }
+  .check-item input:checked:after{
+    width:9px !important;height:5px !important;border-width:2px !important;
+  }
+}
+@media(max-width:380px){
+  .record-card{padding:9px 10px 10px !important;gap:5px !important}
+  .phone-number{font-size:10px !important}
+  .copy-button{width:19px !important;height:21px !important;flex-basis:19px !important}
+  .check-item{font-size:10px !important;gap:5px !important}
+  .check-item input{width:18px !important;height:18px !important;flex-basis:18px !important}
+  .whatsapp-button{height:35px !important;font-size:10px !important;padding:0 6px !important}
+}
